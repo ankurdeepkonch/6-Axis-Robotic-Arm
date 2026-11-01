@@ -41,7 +41,7 @@ void sendAngle(int motorIndex, int angle) {
 
 void stepMotorSmoothly(int motorIndex, int targetAngle, int speedDelay = 15) {
   // NEW SAFETY LOCK: Motor 1 (Index 0) is now the gripper.
-  // It restricts the angle to 90 degrees while keeping 2400 for the map() math[span_1](start_span)[span_1](end_span).
+  // It restricts the angle to 90 degrees
   if (motorIndex == 0) {
     targetAngle = constrain(targetAngle, 0, 90); 
   } else {
@@ -111,7 +111,6 @@ void loop() {
       delay(500);
 
       Serial.println("Sequence 3: Moving down to Ball");
-      // Ensure these placeholders match your actual table angles
       int seq3[6] = {50, 60, 90, 0, 35, 90}; 
       moveToPose(seq3);
       delay(500);
@@ -128,13 +127,13 @@ void loop() {
 
       // --- NEW DROP-OFF SEQUENCE ---
       Serial.println("Sequence 6: Turning Base to new Drop Zone");
-      // Keeps the arm lifted, but changes the Base (Index 5) from 90 to 45 degrees
+      // Keeps the arm lifted, but changes the Base (Index 5) from 90 to 150 degrees
       int seq6[6] = {18, seq5[1], seq5[2], seq5[3], seq5[4], 150}; 
       moveToPose(seq6);
       delay(500);
 
       Serial.println("Sequence 7: Lowering to the Ground");
-      // Uses the same downward elbow/shoulder angles as seq3 (100 and 120) to reach the table
+      // Uses the same downward elbow/shoulder angles as seq3 to reach the table
       int seq7[6] = {18, seq6[1], seq6[2], 0, 35, seq6[5]}; 
       moveToPose(seq7);
       delay(500);
@@ -146,7 +145,7 @@ void loop() {
       delay(500);
 
       Serial.println("Sequence 9: Returning to Home");
-      // Lifts the arm safely back into the air with an open claw
+      // Lifts the arm safely back into the air with a closed claw
       int seq9[6] = {0, 10, 90, 5, 120, 150};
       moveToPose(seq9);
 

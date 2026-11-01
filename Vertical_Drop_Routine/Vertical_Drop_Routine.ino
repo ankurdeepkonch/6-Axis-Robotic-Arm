@@ -111,7 +111,6 @@ void loop() {
 
       Serial.println("Sequence 3: Moving to Ball Position");
       // Array 3: Moves down to the ball's location while keeping gripper open at 50
-      // Replace the last 5 numbers with your actual ball location angles
       int seq3[6] = {50, 60, 90, 0, 35, 90};
       moveToPose(seq3);
       delay(500);
