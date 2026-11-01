@@ -4,7 +4,7 @@
 Adafruit_PWMServoDriver pca(0x40);
 
 // Calibrated pulse limits. 
-// REVERSED ORDER: Motor 1 (Index 0) is now the Gripper.
+
 struct ServoMotor {
   int channel;
   int minUs;
@@ -13,7 +13,7 @@ struct ServoMotor {
 };
 
 ServoMotor servos[6] = {
-  {0, 600, 1500, 2400}, // Motor 1 (Gripper - MG90S) - 2400 is the math placeholder[span_0](start_span)[span_0](end_span)
+  {0, 600, 1500, 2400}, // Motor 1 (Gripper - MG90S) 
   {1, 600, 1500, 2400}, // Motor 2 (Wrist - MG90S)
   {2, 600, 1500, 2400}, // Motor 3 (Upper Elbow/Logo - MG90S)
   {3, 700, 1500, 2350}, // Motor 4 (Elbow - MG996R)
