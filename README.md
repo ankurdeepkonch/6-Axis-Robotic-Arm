@@ -4,26 +4,26 @@ A custom-built 6-axis robotic arm powered by an Arduino Uno and a PCA9685 16-cha
 
 ## Features
 
-- Executes automated, multi-step kinematic routines via Teach-and-Playback arrays[cite: 11].
-- **Vertical Drop:** A 6-step sequence gripping a ball, elevating it to a fixed position, and releasing it mid-air[cite: 10].
-- **Pick and Place:** A 9-step sequence gripping a ball, transporting it to a secondary location by rotating the base, releasing it on the ground, and smoothly returning to the home position[cite: 9].
-- Custom step-function mapping to ensure slow, smooth motor movements without mechanical jerking[cite: 9].
-- Split-map calibration for hardware-accurate 0° to 180° servo positioning, locking the 90° center exactly at 1500 µs to prevent center drift[cite: 12].
-- Hardcoded safety constraints locking the gripper motor to a 90° maximum limit to prevent mechanical gear stripping[cite: 9, 10].
+- Executes automated, multi-step kinematic routines via Teach-and-Playback arrays.
+- **Vertical Drop:** A 6-step sequence gripping a ball, elevating it to a fixed position, and releasing it mid-air.
+- **Pick and Place:** A 9-step sequence gripping a ball, transporting it to a secondary location by rotating the base, releasing it on the ground, and smoothly returning to the home position.
+- Custom step-function mapping to ensure slow, smooth motor movements without mechanical jerking.
+- Split-map calibration for hardware-accurate 0° to 180° servo positioning, locking the 90° center exactly at 1500 µs to prevent center drift.
+- Hardcoded safety constraints locking the gripper motor to a 90° maximum limit to prevent mechanical gear stripping.
 
 ## Components Required
 
 - Arduino Uno
-- PCA9685 16-channel 12-bit PWM servo driver board (Operating at 50 Hz)[cite: 12]
-- 3x MG996R Servo Motors (Elbow, Shoulder, Base)[cite: 9]
-- 3x MG90S Servo Motors (Gripper, Wrist, Upper Elbow)[cite: 9]
+- PCA9685 16-channel 12-bit PWM servo driver board (Operating at 50 Hz)
+- 3x MG996R Servo Motors (Elbow, Shoulder, Base)
+- 3x MG90S Servo Motors (Gripper, Wrist, Upper Elbow)
 - 3D Printed Structural Chassis
 - External 5V/6V Power Supply (High current required for 6 servos)
 - Breadboard and jumper wires
 
 ## Hardware Mapping & Calibrated Pulses
 
-The wiring is structured in reverse order (Motor 1 is the Gripper, Motor 6 is the Base)[cite: 9, 10]. 
+The wiring is structured in reverse order (Motor 1 is the Gripper, Motor 6 is the Base). 
 
 | Joint | Motor Type | PCA9685 Channel | 0° Pulse (Min) | 90° Pulse (Center) | 180° Pulse (Max) |
 |---|---|---|---|---|---|
@@ -64,8 +64,8 @@ The Arduino sends I2C commands to the PCA9685 driver board, generating precise P
 ## Limitations
 
 - The arm requires a high-current external power supply; running from USB alone will cause voltage drops and brownouts.
-- Relies on hardcoded coordinate arrays (Teach-and-Playback) rather than live Inverse Kinematics or computer vision[cite: 11].
-- The Gripper (Motor 1 on Channel 0) is hard-coded with a 90° maximum limit to prevent mechanical binding[cite: 9, 10].
+- Relies on hardcoded coordinate arrays (Teach-and-Playback) rather than live Inverse Kinematics or computer vision.
+- The Gripper (Motor 1 on Channel 0) is hard-coded with a 90° maximum limit to prevent mechanical binding.
 
 ## Author
 
